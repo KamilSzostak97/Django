@@ -170,17 +170,6 @@ a,a:hover{
   max-height: 50%;
 }
 
-.picture-container{
-  text-align: center;
-  background-color: #E8E8E8;
-  padding-bottom:30px; 
-}
-
-.quiz-container{
-  text-align: center;
-  background-color: #E8E8E8;
-}
-
 /*---Technology --*/
 .fa-code {
   color: #e54d26;
@@ -195,6 +184,40 @@ a,a:hover{
   font-size: 4em;
   margin:1rem;
 }
+
+.quiz-picture-container {
+  position: relative;
+  text-align: center;
+  padding-top: 1%;
+  background-color: Brown; 
+}
+
+.quiz-picture-container h2 {
+  color: White;
+  font-size: 350%;
+  font-weight: bold;
+  text-shadow: 1px 1px 15px #000;
+  position: absolute;
+  top: 36%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.background-container {
+  background-color: Brown; 
+  padding-top: 1%; 
+  padding-bottom: 2%;
+  padding-left: 16%;
+  padding-right: 16%;
+}
+
+.quiz-container{
+  text-align: center; 
+  padding-top: 1%; 
+  padding-bottom: 1%; 
+  background-color: Silver;
+}
+
 
 /*---Footer --*/
 footer{

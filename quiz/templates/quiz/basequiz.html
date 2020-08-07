@@ -7,65 +7,47 @@
 {% endblock nav %}
 
 {% block content %}
-	<div class="quiz-container">
-		<header>
-			<div class="pull-left">HTML5 Quiz</div>
-			<div class="pull-right">yeet</div>
-		</header>
-		<main>
-			<form class="questionForm" id="q1" data-question="1">
-				<h3> Question </h3>
-				<ul>
-					<li><input type="radio" name="kock" value="a" />&lt;yeet&gt;</li>
-					<li><input type="radio" name="kock" value="b" />&lt;head&gt;</li>
-					<li><input type="radio" name="kock" value="c" />&lt;head&gt;</li>
-					<li><input type="radio" name="kock" value="d" />&lt;head&gt;</li>
-				</ul>
-				<button id="submit">Submit</button>
-			</form>
-			<form class="questionForm" id="q1" data-question="1">
-				<h3> Question </h3>
-				<ul>
-					<li><input type="radio" name="kock" value="a" />&lt;yeet&gt;</li>
-					<li><input type="radio" name="kock" value="b" />&lt;head&gt;</li>
-					<li><input type="radio" name="kock" value="c" />&lt;head&gt;</li>
-					<li><input type="radio" name="kock" value="d" />&lt;head&gt;</li>
-				</ul>
-				<button id="submit">Submit</button>
-			</form>
-
-						<form class="questionForm" id="q1" data-question="1">
-				<h3> Question </h3>
-				<ul>
-					<li><input type="radio" name="kock" value="a" />&lt;yeet&gt;</li>
-					<li><input type="radio" name="kock" value="b" />&lt;head&gt;</li>
-					<li><input type="radio" name="kock" value="c" />&lt;head&gt;</li>
-					<li><input type="radio" name="kock" value="d" />&lt;head&gt;</li>
-				</ul>
-				<button id="submit">Submit</button>
-			</form>
-
-						<form class="questionForm" id="q1" data-question="1">
-				<h3> Question </h3>
-				<ul>
-					<li><input type="radio" name="kock" value="a" />&lt;yeet&gt;</li>
-					<li><input type="radio" name="kock" value="b" />&lt;head&gt;</li>
-					<li><input type="radio" name="kock" value="c" />&lt;head&gt;</li>
-					<li><input type="radio" name="kock" value="d" />&lt;head&gt;</li>
-				</ul>
-				<button id="submit">Submit</button>
-			</form>
-
-						<form class="questionForm" id="q1" data-question="1">
-				<h3> Question </h3>
-				<ul>
-					<li><input type="radio" name="kock" value="a" />&lt;yeet&gt;</li>
-					<li><input type="radio" name="kock" value="b" />&lt;head&gt;</li>
-					<li><input type="radio" name="kock" value="c" />&lt;head&gt;</li>
-					<li><input type="radio" name="kock" value="d" />&lt;head&gt;</li>
-				</ul>
-				<button id="submit">Submit</button>
-			</form>
-		</main>
+	<div class="container-fluid quiz-picture-container">
+		{% block title %}{% endblock %}
+	</div>
+	<div class="hide-container">
+		<div class="container-fluid background-container">	
+			<div class="container-fluid quiz-container">
+				<div style="display: inline-block; text-align: left;">
+					{%for question in questions %}
+						<table>
+							<tr>
+								<td><h4>{{ forloop.counter }}) {{question.Content}}</h4></td>
+							</tr>
+							<tr>
+								<td><input type="radio" id="Option1" class="rb" name="{{question.id}}" value={{question.Option1}}>{{question.Option1}}</td>
+							</tr>	
+							<tr>
+								<td><input type="radio" id="Option2" class="rb" name="{{question.id}}" value={{question.Option2}}>{{question.Option2}}</td>
+							</tr>
+							<tr>
+								<td><input type="radio" id="Option3" class="rb" name="{{question.id}}" value={{question.Option3}}>{{question.Option3}}</td>
+							</tr>
+							<tr>
+								<td><input type="radio" id="Option4" class="rb" name="{{question.id}}" value={{question.Option4}}>{{question.Option4}}</td>
+							</tr>
+							<output style="display: none;">{{question.Correct}}</output>
+						</table>
+					{% endfor %}
+					<hr/>
+					<input type="submit" value="Click For Results" id="but1" onclick="results();"/>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="final-container" style="display: none;">
+		<div class="container-fluid background-container">	
+			<div class="container-fluid quiz-container">
+				<h3> Thank you for completing the quiz </h3>
+				<b>Your score is </b><b id="Score"></b>
+				<br>
+				<b>You are </b><b id="diagnose"></b>
+			</div>
+		</div>
 	</div>
 {% endblock content %}
