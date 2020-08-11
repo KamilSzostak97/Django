@@ -129,7 +129,7 @@ a,a:hover{
 
 /*---Fixed background --*/
 .paralax{
-  background: url("https://wallpaperstream.com/wallpapers/full/coffee/Coffee-Cup-near-Laptop-Notebook.jpg") 
+  background: url("https://wallpaperstream.com/wallpapers/full/coffee/Coffee-Cup-near-Laptop-Notebook.jpg")
   repeat fixed 100%;
   opacity:0.7;
   background-position: center;
@@ -218,6 +218,31 @@ a,a:hover{
   background-color: Silver;
 }
 
+.quiz-container h3 {
+  font-size: 250%;
+}
+
+.quiz-container b {
+  font-size: 150%;
+}
+
+.submit_button {
+  margin-left:39%; 
+}
+
+.submit_button , .show_button , .hide_button {
+  margin-top:10px;
+  margin-bottom:10px;
+  font-size: 150%;
+  background-color: Brown;
+  color: Silver;
+}
+
+.rb {
+  height: 18px;
+  width: 18px;
+  margin-right: 7px;
+}
 
 /*---Footer --*/
 footer{

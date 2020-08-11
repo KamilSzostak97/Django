@@ -12,10 +12,10 @@ class Question(models.Model):
 
 
 class PoliticalViews(Question):
-	PizzaAns=models.CharField(max_length=150)
-	BurgerAns=models.CharField(max_length=150)
-	KebabAns=models.CharField(max_length=150)
-	HotDogAns=models.CharField(max_length=150)
+	Ans1=models.CharField(max_length=150)
+	Ans2=models.CharField(max_length=150)
+	Ans3=models.CharField(max_length=150)
+	Ans4=models.CharField(max_length=150)
 	
 	def __str__(self):
 		return self.Content
@@ -27,7 +27,10 @@ class IQTest(Question):
 		return self.Content
 
 class FastFood(Question):
-	Correct=models.CharField(max_length=150)
+	Ans1=models.CharField(max_length=150)
+	Ans2=models.CharField(max_length=150)
+	Ans3=models.CharField(max_length=150)
+	Ans4=models.CharField(max_length=150)
 
 	def __str__(self):
 		return self.Content

@@ -2,7 +2,7 @@
 
 {% block nav %}
 	<li class="nav-item active">
-		<a class="nav-link" href="#">return</a>
+		<a class="nav-link hvr-glow" href="{% url 'homepage' %}">return</a>
 	</li>
 {% endblock nav %}
 
@@ -13,31 +13,27 @@
 	<div class="hide-container">
 		<div class="container-fluid background-container">	
 			<div class="container-fluid quiz-container">
-				<h3> Anwser the questions below to get your results </h3>
+				<h3 style="font-size: 250%;"> Anwser the questions below to get your results </h3>
 				<hr/>
 				<div style="display: inline-block; text-align: left;">
 					{%for question in questions %}
-						<table>
+						<table style="font-size:150%; border-collapse:separate; border-spacing:200px 10px;">
 							<tr>
-								<td><h4>{{ forloop.counter }}) {{question.Content}}</h4></td>
+								<th><h4 style="font-size: 120%;">{{ forloop.counter }}) {{question.Content}}</h4></th>
 							</tr>
 							<tr>
 								<td><input type="radio" id="Option1" class="rb" name="{{question.id}}" value={{question.Option1}}>{{question.Option1}}</td>
-							</tr>	
-							<tr>
 								<td><input type="radio" id="Option2" class="rb" name="{{question.id}}" value={{question.Option2}}>{{question.Option2}}</td>
 							</tr>
 							<tr>
 								<td><input type="radio" id="Option3" class="rb" name="{{question.id}}" value={{question.Option3}}>{{question.Option3}}</td>
-							</tr>
-							<tr>
 								<td><input type="radio" id="Option4" class="rb" name="{{question.id}}" value={{question.Option4}}>{{question.Option4}}</td>
 							</tr>
-							{% block compare %}{% endblock %}
 						</table>
 						<hr/>
+						{% block compare %}{% endblock %}
 					{% endfor %}
-					<input type="submit" value="Click For Results" id="but1" onclick="results();"/>
+					<input class="submit_button hvr-glow" type="submit" value="Click For Results" id="but1" onclick="results();"/>
 				</div>
 			</div>
 		</div>

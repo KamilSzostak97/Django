@@ -1,0 +1,98 @@
+{% extends "quiz/basequiz.html" %}
+
+{% block script %}
+	<script>
+		$(document).ready(function()
+		{
+			$("#but1").click(function()
+			{
+				$(".final-container").show();
+				$(".rb").attr("disabled",true);
+				$(".hide-container").hide();
+			});
+			$("#but2").click(function()
+			{
+				$(".more").show();
+				$(".show_button").hide();
+				$(".hide_button").show();
+			});
+			$("#but3").click(function()
+			{
+				$(".more").hide();
+				$(".hide_button").hide();
+				$(".show_button").show();
+			});
+		});
+
+		function find_max(a,b,c,d,compare)
+		{
+			if(a>=b && a>=c && a>=d)
+			{
+				return compare[0].value;
+			}
+			else if(b>=c && b>=d)
+			{
+				return compare[1].value;
+			}
+			else if(c>= d)
+			{
+				return compare[2].value;
+			}
+			else
+			{
+				return compare[3].value;
+			}
+		}
+
+		function calculate(user_anwser,compare)
+		{
+			var j=0, wynik1=0;wynik2=0;wynik3=0;wynik4=0;
+			for(i=0;i<user_anwser.length-1;i++)
+			{
+				if(i-j > 3)
+				{
+					j+=4;
+				}
+				if(user_anwser[i].type == "radio" && user_anwser[i].checked)
+				{
+					switch(true)
+					{
+						case user_anwser[i].value === compare[j].value:
+							wynik1+=1;
+							break;
+						case user_anwser[i].value === compare[j+1].value:
+							wynik2+=1;
+							break;
+						case user_anwser[i].value === compare[j+2].value:
+							wynik3+=1;
+							break;
+						case user_anwser[i].value === compare[j+3].value:
+							wynik4+=1;
+							break;
+						default:
+							break;
+					}
+					j+=4;
+				}
+			}
+			var result = find_max(wynik1,wynik2,wynik3,wynik4,compare);
+			document.getElementById("diagnose").innerHTML+=compare[0].value + " : " + wynik1 + "<br/>" + compare[1].value + " : " + wynik2 + "<br/>" + compare[2].value + " : " + wynik3 + "<br/>" + compare[3].value + " : " + wynik4;
+			return result;
+		}
+
+		function results()
+		{
+			var user_anwser=document.getElementsByTagName('input');
+			var compare=document.getElementsByTagName('output');
+			result=calculate(user_anwser,compare);
+			document.getElementById("Score").innerHTML+=" "+result;
+		}
+	</script>
+{% endblock script %}
+
+{% block compare %}
+	<output style="display: none;">{{question.Ans1}}</output>
+	<output style="display: none;">{{question.Ans2}}</output>
+	<output style="display: none;">{{question.Ans3}}</output>
+	<output style="display: none;">{{question.Ans4}}</output>
+{% endblock %}

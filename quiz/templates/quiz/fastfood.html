@@ -1,6 +1,17 @@
-{% extends "quiz/basequiz.html" %}
+{% extends "quiz/base_quiz_multiple.html" %}
 
 {% block title %}
 	<img src="media/fastfood.jpg" class="mt-1">
 	<h2>Favourite Junk Food</h2>
+{% endblock %}
+
+{% block result_form %}
+	<b>Perfect junk food for you is : </b><b id="Score"></b>
+	<br>
+	<button type="button" id="but2" class="show_button hvr-glow">Show Details</button>
+	<button type="button" id="but3" class="hide_button hvr-glow" style="display: none;">Hide Details</button>
+	<br>
+	<div class="more" style="display: none;">
+		<b>Anwsers: </b><br><b id="diagnose"></b>
+	</div>
 {% endblock %}

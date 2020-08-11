@@ -1,83 +1,8 @@
-{% extends "quiz/basequiz.html" %}
-
-{% block script %}
-	<script>
-		$(document).ready(function()
-		{
-			$("#but1").click(function()
-			{
-				$(".final-container").show();
-				$(".rb").attr("disabled",true);
-				$(".hide-container").hide();
-			});
-		});
-
-		function calculate(correct_anwser,user_anwser)
-		{
-			var j=0, wynik=0; diag = 0;
-			for(i=0;i<user_anwser.length;i++)
-			{
-				if(user_anwser[i].type == "radio" && user_anwser[i].checked)
-				{
-					if(user_anwser[i].value === correct_anwser[j].value)
-					{
-						wynik+=1;
-						j+=1;
-					}	
-				}
-			}
-			return wynik;
-		}
-
-		function diag_func(correct,total)
-		{
-			var evaluate = correct / total;
-			switch (true)
-			{
-				case evaluate <= 0.2:
-					return "not that bright";
-				break;   
-
-				case 0.3 <= evaluate && evaluate <= 0.4:
-					return "bellow avarage";
-				break; 
-
-				case evaluate == 0.5:
-					return "avarage";
-				break; 
-
-				case 0.6 <= evaluate && evaluate <= 0.8:
-					return "above avarage";
-				break; 
-
-				case 0.9 <= evaluate:
-					return "genious";
-				break; 
-
-				default:
-				    return "You have coused and error :(";
-			}
-		}
-
-		function results()
-		{
-			var correct_anwser=document.getElementsByTagName('output');
-			var user_anwser=document.getElementsByTagName('input');
-			var wynik = calculate(correct_anwser,user_anwser);
-			document.getElementById("Score").innerHTML=wynik+" out of "+correct_anwser.length;
-			var diag = diag_func(wynik,correct_anwser.length)
-			document.getElementById("diagnose").innerHTML=diag;
-		}
-	</script>
-{% endblock script %}
+{% extends "quiz/base_quiz_one.html" %}
 
 {% block title %}
 	<img src="media/iq.jpg" class="mt-1">
 	<h2>IQ Test</h2>
-{% endblock %}
-
-{% block compare %}
-	<output style="display: none;">{{question.Correct}}</output>
 {% endblock %}
 
 {% block result_form %}
