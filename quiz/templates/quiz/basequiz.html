@@ -13,6 +13,8 @@
 	<div class="hide-container">
 		<div class="container-fluid background-container">	
 			<div class="container-fluid quiz-container">
+				<h3> Anwser the questions below to get your results </h3>
+				<hr/>
 				<div style="display: inline-block; text-align: left;">
 					{%for question in questions %}
 						<table>
@@ -31,10 +33,10 @@
 							<tr>
 								<td><input type="radio" id="Option4" class="rb" name="{{question.id}}" value={{question.Option4}}>{{question.Option4}}</td>
 							</tr>
-							<output style="display: none;">{{question.Correct}}</output>
+							{% block compare %}{% endblock %}
 						</table>
+						<hr/>
 					{% endfor %}
-					<hr/>
 					<input type="submit" value="Click For Results" id="but1" onclick="results();"/>
 				</div>
 			</div>
@@ -44,9 +46,7 @@
 		<div class="container-fluid background-container">	
 			<div class="container-fluid quiz-container">
 				<h3> Thank you for completing the quiz </h3>
-				<b>Your score is </b><b id="Score"></b>
-				<br>
-				<b>You are </b><b id="diagnose"></b>
+				{% block result_form %}{% endblock %}
 			</div>
 		</div>
 	</div>

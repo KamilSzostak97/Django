@@ -75,3 +75,13 @@
 	<img src="media/iq.jpg" class="mt-1">
 	<h2>IQ Test</h2>
 {% endblock %}
+
+{% block compare %}
+	<output style="display: none;">{{question.Correct}}</output>
+{% endblock %}
+
+{% block result_form %}
+	<b>Your score is </b><b id="Score"></b>
+	<br>
+	<b>You are </b><b id="diagnose"></b>
+{% endblock %}

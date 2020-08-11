@@ -12,63 +12,68 @@
 			});
 		});
 
-		function calculate(correct_anwser,user_anwser)
+
+		function find_max(a,b,c,d)
 		{
-			var j=0, wynik=0; diag = 0;
-			for(i=0;i<user_anwser.length;i++)
+			if(a>=b && a>=c && a>=d)
 			{
-				if(user_anwser[i].type == "radio" && user_anwser[i].checked)
-				{
-					if(user_anwser[i].value === correct_anwser[j].value)
-					{
-						wynik+=1;
-						j+=1;
-					}	
-				}
+				return "pizza";
 			}
-			return wynik;
+			else if(b>=c && b>=d)
+			{
+				return "burger";
+			}
+			else if(c>= d)
+			{
+				return "kebab";
+			}
+			else
+			{
+				return "hotdog";
+			}
 		}
 
-		function diag_func(correct,total)
+		function calculate(user_anwser,compare)
 		{
-			var evaluate = correct / total;
-			evaluate = evaluate.toFixed(2);
-			evaluate = 0.7;
-			switch (true)
+			var j=0, wynik1=0;wynik2=0;wynik3=0;wynik4=0;
+			for(i=0;i<user_anwser.length-1;i++)
 			{
-				case evaluate <= 0.2:
-					return "not that bright";
-				break;   
-
-				case 0.3 <= evaluate && evaluate <= 0.4:
-					return "bellow avarage";
-				break; 
-
-				case evaluate == 0.5:
-					return "avarage";
-				break; 
-
-				case 0.6 <= evaluate && evaluate <= 0.8:
-					return "above avarage";
-				break; 
-
-				case 0.9 <= evaluate:
-					return "genious";
-				break; 
-
-				default:
-				    return "You have coused and error :(";
+				if(i-j > 3)
+				{
+					j+=4;
+				}
+				if(user_anwser[i].type == "radio" && user_anwser[i].checked)
+				{
+					switch(true)
+					{
+						case user_anwser[i].value === compare[j].value:
+							wynik1+=1;
+							break;
+						case user_anwser[i].value === compare[j+1].value:
+							wynik2+=1;
+							break;
+						case user_anwser[i].value === compare[j+2].value:
+							wynik3+=1;
+							break;
+						case user_anwser[i].value === compare[j+3].value:
+							wynik4+=1;
+							break;
+						default:
+							break;
+					}
+					j+=4;
+				}
 			}
+			var result = find_max(wynik1,wynik2,wynik3,wynik4);
+			document.getElementById("Score").innerHTML+=" "+result;
+			document.getElementById("diagnose").innerHTML+="Pizza: " + wynik1 + "<br/>" + "Burger: " + wynik2 + "<br/>" + "Kebab: " + wynik3 + "<br/>" + "HotDog: " + wynik4;
 		}
 
 		function results()
 		{
-			var correct_anwser=document.getElementsByTagName('output');
 			var user_anwser=document.getElementsByTagName('input');
-			var wynik = calculate(correct_anwser,user_anwser);
-			document.getElementById("Score").innerHTML=wynik+" out of "+correct_anwser.length;
-			var diag = diag_func(wynik,correct_anwser.length)
-			document.getElementById("diagnose").innerHTML=diag;
+			var compare=document.getElementsByTagName('output');
+			calculate(user_anwser,compare);
 		}
 	</script>
 {% endblock script %}
@@ -76,4 +81,17 @@
 {% block title %}
 	<img src="media/politics.jpg" class="mt-1">
 	<h2>Political Views</h2>
+{% endblock %}
+
+{% block compare %}
+	<output style="display: none;">{{question.PizzaAns}}</output>
+	<output style="display: none;">{{question.BurgerAns}}</output>
+	<output style="display: none;">{{question.KebabAns}}</output>
+	<output style="display: none;">{{question.HotDogAns}}</output>
+{% endblock %}
+
+{% block result_form %}
+	<b>Perfect junk food for you is </b><b id="Score"></b>
+	<br>
+	<b>Anwsers: </b><br><b id="diagnose"></b>
 {% endblock %}
