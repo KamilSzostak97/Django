@@ -220,6 +220,11 @@ a,a:hover{
 
 .quiz-container h3 {
   font-size: 250%;
+  font-weight: bold;
+}
+
+.quiz-container h4 {
+  font-weight: bold;
 }
 
 .quiz-container b {
