@@ -35,5 +35,5 @@ about wich food is perfect for him. User also have option to view details of his
 
 # ToDo
 - Phone version
-
+- Optimize image loading
 
