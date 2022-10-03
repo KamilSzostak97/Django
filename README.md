@@ -1,4 +1,3 @@
-# Link - http://kszostak.pythonanywhere.com/
 # ProjectQuiz
 My first web application made in Django.
 
